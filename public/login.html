@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       /* Center the content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background:linear-gradient(to right,pink,white,pink)
+}
+
+/* Style the heading */
+h1 {
+    font-size: 28px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+/* Style the container */
+.container {
+    width: 30%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the form elements */
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+    flex-basis: 45%; /* Adjust the width as needed */
+}
+
+.input-container {
+    flex-grow: 1;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Style the submit button */
+#submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 40%;
+    margin-left: 30px;
+}
+
+    </style>
+</head>
+<body>
+<h1>Login Form</h1>
+        <div class="container">
+            <form method="post" action="/loginSubmit">
+                <div class="username">
+                    <label id="username">Username :</label>
+                    <input type="text" name="username" />
+                </div>
+                    <br>
+                    <br>
+                    <br>
+                <div class="pass"></div>
+                    <label id="password">Password :</label>
+                    <input type="password" name="password" />
+                </div>
+                <button type="submit" id="submit" value="Submit">SUBMIT</button>
+            </form>
+        </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+body{
+    background: linear-gradient(to right,pink,white,pink);
+}
+.center {
+    text-align: center;
+}
+
+/* Style the container */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form elements */
+.container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Style the submit button */
+#submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#submit:hover {
+    background-color: #0056b3;
+}
+
+
+    </style>
+</head>
+<body>
+    <center>
+    <div class="h1">
+        <h1>Signup page with firebase</h1>
+        </div>
+        <div class="container">
+        <form method="post" action="/signupSubmit">
+            <br>
+            <br>
+        <div class="user">
+            <label id="username">Username : </label>
+            <input type="text" name="username" required />
+        </div>
+            <br>
+            <br>
+            <br>
+        <!--<div class="user1">
+            <label id="last_name">Last name : </label>
+            <input type="text" name="last_name" />
+        </div>-->
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="email">
+            <label id="email">Email :</label>
+            <input type="email" name="email" required />
+        </div>
+            <br>
+            <br>
+            <br>
+        <div class="pass"></div>
+            <label id="password">Password :</label>
+            <input type="password" name="password" required/>
+        </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button type="submit" id="submit" value="submit">SUBMIT</button>
+    </center>
+        </form>
+        </div>
+    </body>
+</html>
