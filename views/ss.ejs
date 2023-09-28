@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ISRO Launch Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(to right,orange,white,green);
+        }
+
+        h1 {
+            color: black;
+            padding: 20px;
+            text-shadow: 2px 2px 5px;
+            text-align: center;
+            background:linear-gradient(to right,orange,white,green);
+        }
+        .launch-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .launch-box {
+            flex-basis: calc(33.33% - 20px);
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .launch-box-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .launch-box-link {
+            text-decoration: none;
+            color: #0074D9;
+            font-weight: bold;
+        }
+
+        .launch-box-link:hover {
+            text-decoration: underline;
+        }
+        .launch-image {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post"></form>
+    <img src="Copy-of-Copy-of-Blog-images-Final-(30).webp" style="width: 1520px; height: 250px;">
+    <h1>WELCOME EVERYONE !!</h1><h1>INDIAN SPACE RESEARCH ORGANISATION</h1><img src="rock.webp" style="width: 720px; height: 500px; margin-left: 10px; border-radius: 10px;"><img src="rock2.jpeg" style="width: 750px; height: 500px; margin-left: 30px; border-radius: 10px; "><h1>Sky is not the limit; it's just the Beggining</h1><img src="giphy (1).gif" style="width: 1400px; height: 500px; margin-left: 60px; margin-top: 30px; border-radius: 20px;"><h1>ROCKET LAUNCH INFORMATION</h1>
+    <!-- Display Launch Information -->
+    <div id="launchInfo" class="launch-container">
+        <!-- Launch information will be displayed here -->
+    </div>
+    <script>
+        // Function to fetch and display launch information
+        function fetchAndDisplayLaunchInfo() {
+            // API URL
+            const apiUrl = 'https://services.isrostats.in/api/launches';
+
+            // Fetch data from the API
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Create a container div to hold launch boxes
+                    const launchInfoDiv = document.getElementById('launchInfo');
+
+                    // Iterate through the launch data and create a launch box for each launch
+                    data.forEach(launch => {
+                        const launchBox = document.createElement('div');
+                        launchBox.classList.add('launch-box');
+                        launchBox.innerHTML = `
+                            <img class="launch-image" src="${getImageForLaunch(launch.Name)}" alt="Launch Image">
+                            <div class="launch-box-header">Name: ${launch.Name}</div>
+                            <div>Serial Number: ${launch.SerialNumber}</div>
+                            <div>Launch Date: ${launch.LaunchDate}</div>
+                            <div>Launch Type: ${launch.LaunchType}</div>
+                            <div>Payload: ${launch.Payload}</div>
+                            <div><a class="launch-box-link" href="${launch.Link}" target="_blank">More Details</a></div>
+                            <div>Mission Status: ${launch.MissionStatus}</div>
+                        `;
+                        launchInfoDiv.appendChild(launchBox);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+        function getImageForLaunch(launchName) {
+            // You can customize this function to return different image URLs based on the launchName
+            // For now, it returns a placeholder image URL
+            const launchImageMap = {
+    "PSLV-C57/Aditya-L1 Mission": "1.webp","PSLV-C56/DS-SAR Mission": "2.jpeg","LVM3 M4 / Chandrayaan-3 Mission": "3.jpeg",
+    "GSLV-F12/NVS-01 Mission": "4.webp","LVM3 M3 / OneWeb India-2 Mission": "5.jpeg","SSLV-D2/EOS-07 Mission": "6.jpeg",
+    "PSLV-C54/EOS-06 Mission": "7.jpeg","SSLV-D1/EOS-D2 Mission": "8.jpeg","PSLV-C53/DS-EO Mission": "9.jpeg",
+    "GSLV-F10 / EOS-03": "10.webp","GSLV-Mk III - M1 / Chandrayaan-2 Mission": "11.png","GSLV-F11 / GSAT-7A Mission": "12.jpeg",
+    "PSLV-C42 Mission": "8.jpeg","PSLV-C41/IRNSS-1I": "rock2.jpeg","PSLV-C38 / Cartosat-2 Series Satellite": "4.webp",
+    "GSLV-F09 / GSAT-9": "5.jpeg","PSLV-C37 / Cartosat -2 Series Satellite": "6.jpeg","PSLV-C36 / RESOURCESAT-2A": "7.jpeg",
+    "PSLV-C34 / CARTOSAT-2 Series Satellite": "8.jpeg","PSLV-C33/IRNSS-1G": "9.jpeg","PSLV-C25": "12.jpeg",
+    "PSLV-C18/Megha-Tropiques": "10.webp","PSLV-C17/GSAT-12": "11.png","PSLV-C16/RESOURCESAT-2": "1.webp","GSLV-F06 / GSAT-5P": "2.jpeg",
+    "PSLV-C10": "3.jpeg","PSLV-C6/CARTOSAT-1/HAMSAT": "3.jpeg","PSLV-C5 /RESOURCESAT-1": "4.webp","PSLV-C3 / TES": "5.jpeg",
+    "PSLV-C2/IRS-P4": "6.jpeg", "ASLV-D4": "7.jpeg","ASLV-D3": "8.jpeg","PSLV-C55/TeLEOS-2 Mission":"9.jpeg",
+    "PSLV-C52/EOS-04 Mission":"10.webp","PSLV-C50/CMS-01":"11.png"," PSLV-C47 / Cartosat-3 Mission":"12.jpeg",
+    "PSLV-C47 / Cartosat-3 Mission":"1.webp","PSLV-C47 / Cartosat-3 Mission":"2.jpeg"," PSLV-C45/EMISAT MISSION":"3.jpeg",
+    "GSLV-F08/GSAT-6A Mission": "5.jpeg","RLV-TD": "6.jpeg","PSLV-C32/IRNSS-1F": "7.jpeg",
+    "PSLV-C27/IRNSS-1D": "8.jpeg","PSLV-C26/IRNSS-1C": "9.jpeg","GSLV-D5/GSAT-14": "10.webp","PSLV-C19/RISAT-1": "11.png",
+    "GSLV-D3 / GSAT-4": "12.jpeg","PSLV-C12 / RISAT-2": "1.webp","GSLV-F04 / INSAT-4CR": "2.jpeg","GSLV-D1/GSAT-1":"3.jpeg",
+    "PSLV-D3 / IRS-P3": "4.webp","PSLV-D2": "5.jpeg", "PSLV-D1": "6.jpeg","ASLV-D2": "7.jpeg","SLV-3E1": "8.jpeg",
+    "LVM3 M2 / OneWeb India-1 Mission": "rock2.jpeg","PSLV-C49/EOS-01": "10.webp","PSLV-C48/RISAT-2BR1": "9.jpeg","PSLV-C44": "11.png",
+    "PSLV-C43 / HysIS Mission": "12.jpeg","PSLV-C35 / SCATSAT-1": "1.webp","Scramjet Engine - TD": "2.jpeg",
+    "PSLV-C29 / TeLEOS-1 Mission": "3.jpeg","LVM-3/CARE Mission": "4.webp","PSLV-C24/IRNSS-1B": "5.jpeg","PSLV-C22/IRNSS-1A": "6.jpeg",
+    "PSLV-C20/SARAL": "7.jpeg","PSLV-C21": "8.jpeg","PSLV-C15/CARTOSAT-2B": "9.jpeg","PSLV-C14 / OCEANSAT-2": "10.webp","PSLV-C11": "11.png",
+    "PSLV-C8": "12.jpeg","GSLV-F02 / INSAT-4C": "1.webp","GSLV-F01 / EDUSAT(GSAT-3)": "2.jpeg","GSLV-D2 / GSAT-2": "3.jpeg",
+    "GSLV-D1 / GSAT-1": "4.jpeg","GSLV Mk III - M1 / Chandrayaan-2": "5.jpeg","GSLV Mk III - M1 / GSAT-29": "12.jpeg",
+    "GSAT-6 / GSLV Mk II-F01": "8.jpeg","GSLV Mk II-D6 / GSAT-6": "7.jpeg","PSLV-C1 / IRS-1D": "8.jpeg","SLV-3": "9.jpeg",
+    "PSLV-C51/Amazonia-1": "10.webp","PSLV-C46 Mission": "11.png","GSLV Mk III-D2 / GSAT-29 Mission": "12.jpeg","CREW ESCAPE SYSTEM": "1.webp",
+    "PSLV-C40/Cartosat-2 Series Satellite Mission": "rock2.jpeg","PSLV-C39/IRNSS-1H Mission": "rock.webp","GSLV Mk III-D1/GSAT-19 Mission": "2.jpeg",
+    "GSLV-F05 / INSAT-3DR": "3.jpeg","PSLV-C31/IRNSS-1E": "4.webp","PSLV-C30/AstroSat MISSION": "5.jpeg","GSLV-D6": "6.jpeg",
+    "PSLV-C28 / DMC3 Mission": "7.jpeg","PSLV-C23": "8.jpeg","PSLV-C9 / CARTOSAT – 2A": "9.jpeg","PSLV-C7 / CARTOSAT-2 / SRE-1": "10.webp",
+    "PSLV-C4 /KALPANA-1": "11.png","ASLV-D1": "12.jpeg","SLV-3D1": "1.webp","SLV-3E2": "4.webp",
+
+        // Add more launch names and their corresponding image URLs here
+    };
+
+    // Check if the launch name exists in the mapping, and return the corresponding image URL
+    if (launchImageMap.hasOwnProperty(launchName)) {
+        return launchImageMap[launchName];
+    }
+
+    // If the launch name is not found in the mapping, return a default image URL
+    return 'default_image_url.jpg';
+            
+        }
+        // Fetch and display launch information when the page loads
+        window.addEventListener('load', fetchAndDisplayLaunchInfo);
+    </script>
+</body>
+</html>
